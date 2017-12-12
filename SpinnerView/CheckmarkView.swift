@@ -56,7 +56,7 @@ open class CheckmarkView: UIView {
         return checkmarkShape
     }()
     
-    private lazy var drawAnimation: CABasicAnimation = {
+    lazy var drawAnimation: CABasicAnimation = {
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         animation.fromValue = 0
