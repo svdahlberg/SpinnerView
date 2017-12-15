@@ -32,8 +32,8 @@ import UIKit
     private lazy var circleShape: CAShapeLayer = {
         let circleShape = CAShapeLayer()
         circleShape.frame = bounds
-        circleShape.lineWidth = 5
-        circleShape.strokeColor = UIColor.black.cgColor
+        circleShape.lineWidth = lineWidth
+        circleShape.strokeColor = strokeColor.cgColor
         circleShape.fillColor = UIColor.clear.cgColor
         circleShape.path = circlePath.cgPath
         return circleShape
