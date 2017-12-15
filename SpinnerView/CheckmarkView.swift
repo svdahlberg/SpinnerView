@@ -13,8 +13,8 @@ import UIKit
     @IBInspectable open var lineWidth: CGFloat = 5
     @IBInspectable open var strokeColor: UIColor = .white
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
         setupView()
     }
     
@@ -22,10 +22,16 @@ import UIKit
         self.lineWidth = lineWidth
         self.strokeColor = strokeColor
         super.init(frame: frame)
+        setupView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
     }
     
     private func setupView() {
@@ -64,4 +70,3 @@ import UIKit
     }()
     
 }
-

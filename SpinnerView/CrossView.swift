@@ -18,19 +18,20 @@ import UIKit
         setupView()
     }
     
-    open override func awakeFromNib() {
-        super.awakeFromNib()
-        setupView()
-    }
-    
     public init(frame: CGRect, lineWidth: CGFloat, strokeColor: UIColor) {
         self.lineWidth = lineWidth
         self.strokeColor = strokeColor
         super.init(frame: frame)
+        setupView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
     }
     
     private func setupView() {
