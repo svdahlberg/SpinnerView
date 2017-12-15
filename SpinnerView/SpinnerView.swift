@@ -6,15 +6,21 @@
 //  Copyright © 2017 Svante Dahlberg. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-open class SpinnerView: UIView {
+@IBDesignable open class SpinnerView: UIView {
     
-    open var successColor: UIColor = .green
-    open var failColor: UIColor = .red
-    open var strokeColor: UIColor = .white
-    open var lineWidth: CGFloat = 5
-    private(set) open var isAnimating: Bool = false
+    @IBInspectable open var successColor: UIColor = .green
+    @IBInspectable open var failColor: UIColor = .red
+    @IBInspectable open var strokeColor: UIColor = .white
+    @IBInspectable open var lineWidth: CGFloat = 5
+    @IBInspectable open var hidesWhenStopped: Bool = false
+    private(set) open var isAnimating: Bool = false {
+        didSet {
+            guard !isAnimating, hidesWhenStopped else { return }
+            isHidden = true
+        }
+    }
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,6 +35,7 @@ open class SpinnerView: UIView {
     private func setupView() {
         isHidden = !isAnimating
         layer.addSublayer(arcShape)
+        start()
     }
     
     open func start() {
@@ -43,7 +50,7 @@ open class SpinnerView: UIView {
             return
         }
         
-        let completionSymbolView = success ? CheckmarkView(frame: frame, lineWidth: lineWidth, strokeColor: strokeColor) : CrossView(frame: frame, lineWidth: lineWidth, strokeColor: strokeColor)
+        let completionSymbolView = success ? CheckmarkView(frame: bounds, lineWidth: lineWidth, strokeColor: strokeColor) : CrossView(frame: bounds, lineWidth: lineWidth, strokeColor: strokeColor)
         
         addSubview(completionSymbolView)
         removeAnimations(success: success)
@@ -78,7 +85,7 @@ open class SpinnerView: UIView {
     
     private lazy var arcShape: CAShapeLayer = {
         let arcShape = CAShapeLayer()
-        arcShape.frame = frame
+        arcShape.frame = bounds
         arcShape.lineWidth = lineWidth
         arcShape.strokeColor = strokeColor.cgColor
         arcShape.fillColor = UIColor.clear.cgColor
@@ -143,3 +150,4 @@ open class SpinnerView: UIView {
     }()
     
 }
+

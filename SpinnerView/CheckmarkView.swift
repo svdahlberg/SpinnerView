@@ -8,10 +8,10 @@
 
 import Foundation
 
-open class CheckmarkView: UIView {
+@IBDesignable open class CheckmarkView: UIView {
     
-    open var lineWidth: CGFloat = 5
-    open var strokeColor: UIColor = .white
+    @IBInspectable open var lineWidth: CGFloat = 5
+    @IBInspectable open var strokeColor: UIColor = .white
     
     public override init(frame: CGRect) {
         super.init(frame: frame)

@@ -6,18 +6,23 @@
 //  Copyright © 2017 Svante Dahlberg. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-open class CirceledCheckmarkView: CheckmarkView {
+@IBDesignable open class CirceledCheckmarkView: CheckmarkView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.addSublayer(circleShape)
-        circleShape.add(drawAnimation, forKey: nil)
+        setupView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
+        setupView()
+    }
+    
+    private func setupView() {
+        layer.addSublayer(circleShape)
+        circleShape.add(drawAnimation, forKey: nil)
     }
     
     private lazy var circleShape: CAShapeLayer = {
@@ -38,3 +43,4 @@ open class CirceledCheckmarkView: CheckmarkView {
         return circlePath
     }()
 }
+
