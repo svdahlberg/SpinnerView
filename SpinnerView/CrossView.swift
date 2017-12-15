@@ -6,7 +6,7 @@
 //  Copyright © 2017 Svante Dahlberg. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 @IBDesignable open class CrossView: UIView {
     
@@ -18,16 +18,19 @@ import Foundation
         setupView()
     }
     
+    open override func awakeFromNib() {
+        super.awakeFromNib()
+        setupView()
+    }
+    
     public init(frame: CGRect, lineWidth: CGFloat, strokeColor: UIColor) {
         self.lineWidth = lineWidth
         self.strokeColor = strokeColor
         super.init(frame: frame)
-        setupView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
     }
     
     private func setupView() {
@@ -67,3 +70,4 @@ import Foundation
     }()
     
 }
+

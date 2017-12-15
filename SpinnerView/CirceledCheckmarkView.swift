@@ -8,15 +8,10 @@
 
 import UIKit
 
-@IBDesignable open class CirceledCheckmarkView: CheckmarkView {
+open class CirceledCheckmarkView: CheckmarkView {
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupView()
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    open override func awakeFromNib() {
+        super.awakeFromNib()
         setupView()
     }
     
@@ -43,4 +38,3 @@ import UIKit
         return circlePath
     }()
 }
-

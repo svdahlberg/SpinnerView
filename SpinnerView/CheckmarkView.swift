@@ -6,15 +6,15 @@
 //  Copyright © 2017 Svante Dahlberg. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 @IBDesignable open class CheckmarkView: UIView {
     
     @IBInspectable open var lineWidth: CGFloat = 5
     @IBInspectable open var strokeColor: UIColor = .white
     
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
+    open override func awakeFromNib() {
+        super.awakeFromNib()
         setupView()
     }
     
@@ -22,12 +22,10 @@ import Foundation
         self.lineWidth = lineWidth
         self.strokeColor = strokeColor
         super.init(frame: frame)
-        setupView()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupView()
     }
     
     private func setupView() {
@@ -66,3 +64,4 @@ import Foundation
     }()
     
 }
+
