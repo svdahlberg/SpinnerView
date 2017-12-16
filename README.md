@@ -5,6 +5,8 @@
 [![License](https://img.shields.io/cocoapods/l/SpinnerView.svg?style=flat)](http://cocoapods.org/pods/SpinnerView)
 [![Platform](https://img.shields.io/cocoapods/p/SpinnerView.svg?style=flat)](http://cocoapods.org/pods/SpinnerView)
 
+A material design like loading indicator with success and fail animations.
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -22,7 +24,7 @@ pod 'SpinnerView'
 
 ## Author
 
-svdahlberg, svante.dahlberg@gmail.com
+Svante Dahlberg, svante.dahlberg@gmail.com
 
 ## License
 
