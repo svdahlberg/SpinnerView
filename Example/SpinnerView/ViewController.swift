@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import SpinnerView
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var spinnerView: SpinnerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        spinnerView.start()
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @objc private func handleTap() {
+        spinnerView.isAnimating ? spinnerView.stop(success: true) : spinnerView.start()
     }
 
 }

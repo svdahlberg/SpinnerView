@@ -1,8 +1,8 @@
 {
   "name": "SpinnerView",
   "version": "0.1.0",
-  "summary": "A short description of SpinnerView.",
-  "description": "TODO: Add long description of the pod here.",
+  "summary": "A material design like loading indicator with success and fail animations.",
+  "description": "A material design like loading indicator with success and fail animations.",
   "homepage": "https://github.com/svdahlberg/SpinnerView",
   "license": {
     "type": "MIT",
@@ -18,5 +18,6 @@
   "platforms": {
     "ios": "8.0"
   },
-  "source_files": "SpinnerView/Classes/**/*"
+  "source_files": "SpinnerView/Classes/**/*",
+  "frameworks": "UIKit"
 }
