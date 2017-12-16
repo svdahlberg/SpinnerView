@@ -1,0 +1,6 @@
+framework module SpinnerView {
+  umbrella header "SpinnerView-umbrella.h"
+
+  export *
+  module * { export * }
+}

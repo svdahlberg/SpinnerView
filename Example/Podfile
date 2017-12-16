@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SpinnerView_Example' do
+  pod 'SpinnerView', :path => '../'
+
+  target 'SpinnerView_Tests' do
+    inherit! :search_paths
+
+    pod 'FBSnapshotTestCase' , '~> 2.1.4'
+  end
+end
