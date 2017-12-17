@@ -13,18 +13,12 @@ class ViewController: UIViewController {
 
     @IBOutlet private weak var spinnerView: SpinnerView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBAction private func start(_ sender: Any) {
         spinnerView.start()
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc private func handleTap() {
-        spinnerView.isAnimating ? spinnerView.stop(success: true) : spinnerView.start()
+    @IBAction private func stop(_ sender: Any) {
+        spinnerView.stop(success: true)
     }
-
+    
 }
-

@@ -15,7 +15,7 @@ import UIKit
     @IBInspectable open var strokeColor: UIColor = .white
     @IBInspectable open var lineWidth: CGFloat = 5
     @IBInspectable open var hidesWhenStopped: Bool = false
-    private(set) open var isAnimating: Bool = false {
+    @IBInspectable private(set) open var isAnimating: Bool = false {
         didSet {
             guard !isAnimating, hidesWhenStopped else { return }
             isHidden = true
@@ -36,15 +36,11 @@ import UIKit
         setupView()
     }
     
-    private func setupView() {
-        isHidden = !isAnimating
-        layer.addSublayer(arcShape)
-        start()
-    }
-    
     open func start() {
         isHidden = false
         isAnimating = true
+        resetView()
+        layer.addSublayer(arcShape)
         animate()
     }
     
@@ -53,11 +49,25 @@ import UIKit
             removeAnimations(success: nil)
             return
         }
-        
-        let completionSymbolView = success ? CheckmarkView(frame: bounds, lineWidth: lineWidth, strokeColor: strokeColor) : CrossView(frame: bounds, lineWidth: lineWidth, strokeColor: strokeColor)
-        
-        addSubview(completionSymbolView)
+        let completionView = completionSymbolView(success: success)
+        completionSymbolView = completionView
+        addSubview(completionView)
         removeAnimations(success: success)
+    }
+    
+    private func setupView() {
+        isHidden = !isAnimating
+        if isAnimating {
+            start()
+        }
+    }
+    
+    private func resetView() {
+        completionSymbolView?.removeFromSuperview()
+        arcShape.removeFromSuperlayer()
+        arcShape.removeAllAnimations()
+        arcShape = initialArcShape()
+        arcShape.strokeEnd = 0
     }
     
     private func animate() {
@@ -87,7 +97,11 @@ import UIKit
         return success ? successColor.cgColor : failColor.cgColor
     }
     
-    private lazy var arcShape: CAShapeLayer = {
+    // MARK: Shapes & Views
+    
+    private lazy var arcShape: CAShapeLayer = initialArcShape()
+    
+    private func initialArcShape() -> CAShapeLayer {
         let arcShape = CAShapeLayer()
         arcShape.frame = bounds
         arcShape.lineWidth = lineWidth
@@ -96,7 +110,7 @@ import UIKit
         arcShape.lineCap = kCALineCapRound
         arcShape.path = arcPath.cgPath
         return arcShape
-    }()
+    }
     
     private lazy var arcPath: UIBezierPath = {
         let arcPath = UIBezierPath()
@@ -107,6 +121,18 @@ import UIKit
         arcPath.addArc(withCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return arcPath
     }()
+    
+    private var completionSymbolView: UIView? {
+        didSet {
+            oldValue?.removeFromSuperview()
+        }
+    }
+    
+    private func completionSymbolView(success: Bool) -> UIView {
+        return success ? CheckmarkView(frame: bounds, lineWidth: lineWidth, strokeColor: strokeColor) : CrossView(frame: bounds, lineWidth: lineWidth, strokeColor: strokeColor)
+    }
+    
+    // MARK: Animations
     
     private lazy var animationGroup: CAAnimationGroup = {
         let animationGroup = CAAnimationGroup()

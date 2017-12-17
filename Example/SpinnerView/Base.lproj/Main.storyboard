@@ -28,11 +28,35 @@
                                     <constraint firstAttribute="height" constant="100" id="6Ds-7H-mhY"/>
                                     <constraint firstAttribute="width" constant="100" id="FOg-AC-l6i"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isAnimating" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="100" translatesAutoresizingMaskIntoConstraints="NO" id="qND-Pc-jty">
+                                <rect key="frame" x="104.5" y="537" width="166" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nox-eL-PmZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="34" height="30"/>
+                                        <state key="normal" title="Start"/>
+                                        <connections>
+                                            <action selector="start:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="kHg-ox-gIK"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJL-gq-fzn">
+                                        <rect key="frame" x="134" y="0.0" width="32" height="30"/>
+                                        <state key="normal" title="Stop"/>
+                                        <connections>
+                                            <action selector="stop:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="eqw-qj-hSW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="qND-Pc-jty" secondAttribute="bottom" constant="100" id="Jwt-8P-VqP"/>
                             <constraint firstItem="tvL-SX-XDD" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Pd7-6t-JhP"/>
+                            <constraint firstItem="qND-Pc-jty" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ZzJ-h4-IKg"/>
                             <constraint firstItem="tvL-SX-XDD" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="vFZ-XS-BS3"/>
                         </constraints>
                     </view>
