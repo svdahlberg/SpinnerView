@@ -7,6 +7,8 @@
 
 A material design like loading indicator with success and fail animations.
 
+![](./demoVideo.gif)
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
